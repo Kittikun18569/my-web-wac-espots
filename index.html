@@ -449,24 +449,21 @@
           <th>เวลา</th>
           <th>ทีม A</th>
           <th>ทีม B</th>
-          <th>สถานที่</th>
         </tr>
       </thead>
       <tbody>
-        <tr onclick="openModal('หลวงพ่อหลุย', 'ผู้ใหญ่บ้าน', '10 ก.ค. 2025', '11:30', 'หอประชุม โรงเรียนวชิรปราการวิทยาคม')">
+        <tr onclick="openModal('หลวงพ่อหลุย', 'ผู้ใหญ่บ้าน', '10 ก.ค. 2025', '11:30',)">
           <td>10 ก.ค. 2025</td>
           <td>11:30</td>
           <td>หลวงพ่อหลุย</td>
           <td>ผู้ใหญ่บ้าน</td>
-          <td>หอประชุม โรงเรียนวชิรปราการวิทยาคม</td>
         </tr>
          
-        <tr onclick="openModal('บ้านพี่เอง', 'ดาวร้าย', '10 ก.ค. 2025', '11:30', 'หอประชุม โรงเรียนวชิรปราการวิทยาคม')">
+        <tr onclick="openModal('บ้านพี่เอง', 'ดาวร้าย', '10 ก.ค. 2025', '11:30',)">
           <td>10 ก.ค. 2025</td>
           <td>11:30</td>
           <td>บ้านพี่เอง</td>
           <td>ดาวร้าย</td>
-          <td>หอประชุม โรงเรียนวชิรปราการวิทยาคม</td>
         </tr>
       </tbody>
     </table>
@@ -479,16 +476,14 @@
           <th>เวลา</th>
           <th>ทีม A</th>
           <th>ทีม B</th>
-          <th>สถานที่</th>
         </tr>
       </thead>
       <tbody>
-        <tr onclick="openModal('หมามืด', 'ผู้ใหญ่บ้าน', '11 ก.ค. 2025', '12:30', 'หอประชุม โรงเรียนวชิรปราการวิทยาคม')">
+        <tr onclick="openModal('หมามืด', 'ผู้ใหญ่บ้าน', '11 ก.ค. 2025', '12:30',)">
           <td>11 ก.ค. 2025</td>
           <td>12:30</td>
           <td>หมามืด</td>
           <td>ผู้ใหญ่บ้าน</td>
-          <td>หอประชุม โรงเรียนวชิรปราการวิทยาคม</td>
         </tr>
       </tbody>
     </table>
@@ -562,21 +557,20 @@
         </tr>
       </thead>
       <tbody>
-        <tr onclick="openModalResult('10 ก.ค. 2025', '11:30', 'หลวงพ่อหลุย', '1 - 0', 'ผู้ใหญ่บ้าน', 'หอประชุม โรงเรียนวชิรปราการวิทยาคม')">
+        <tr onclick="openModalResult('10 ก.ค. 2025', '11:30', 'หลวงพ่อหลุย', '1 - 0', 'ผู้ใหญ่บ้าน', )">
           <td>10 ก.ค. 2025</td>
           <td>11:30</td>
           <td class="win">หลวงพ่อหลุย</td>
           <td>1 - 0</td>
           <td class="lose">ผู้ใหญ่บ้าน</td>
-          <td>หอประชุม โรงเรียนวชิรปราการวิทยาคม</td>
         </tr>
-        <tr onclick="openModalResult('10 ก.ค. 2025', '11:30', 'บ้านพี่เอง', '1 - 0', 'ดาวร้าย', 'หอประชุม โรงเรียนวชิรปราการวิทยาคม')">
+        <tr onclick="openModalResult('10 ก.ค. 2025', '11:30', 'บ้านพี่เอง', '1 - 0', 'ดาวร้าย', )">
           <td>10 ก.ค. 2025</td>
           <td>11:30</td>
           <td class="win">บ้านพี่เอง</td>
           <td>1 - 0</td>
           <td class="lose">ดาวร้าย</td>
-          <td>หอประชุม โรงเรียนวชิรปราการวิทยาคม</td>
+
         </tr>
       </tbody>
     </table>
@@ -613,7 +607,6 @@
     <span class="close" onclick="closeModal()">&times;</span>
     <h3 id="modal-title"></h3>
     <p id="modal-date-time"></p>
-    <p id="modal-location"></p>
   </div>
 </div>
 
@@ -624,7 +617,6 @@
     <h3 id="modalResult-title"></h3>
     <p id="modalResult-score"></p>
     <p id="modalResult-date-time"></p>
-    <p id="modalResult-location"></p>
   </div>
 </div>
 
@@ -641,7 +633,6 @@
   function openModal(teamA, teamB, date, time, location) {
     document.getElementById('modal-title').textContent = `${teamA} vs ${teamB}`;
     document.getElementById('modal-date-time').textContent = `วันที่: ${date} เวลา: ${time}`;
-    document.getElementById('modal-location').textContent = `สถานที่: ${location}`;
     document.getElementById('modal').style.display = 'block';
   }
 
@@ -654,7 +645,6 @@
     document.getElementById('modalResult-title').textContent = `${teamA} vs ${teamB}`;
     document.getElementById('modalResult-score').textContent = `ผลการแข่งขัน: ${score}`;
     document.getElementById('modalResult-date-time').textContent = `วันที่: ${date} เวลา: ${time}`;
-    document.getElementById('modalResult-location').textContent = `สถานที่: ${location}`;
     document.getElementById('modalResult').style.display = 'block';
   }
 
