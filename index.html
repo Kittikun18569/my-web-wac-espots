@@ -44,6 +44,7 @@
       margin: 3px;
       border-radius: 6px;
       transition: all 0.3s ease;
+      cursor: pointer;
     }
 
     nav a:hover {
@@ -98,6 +99,7 @@
     table tbody tr:hover {
       background-color: #d0ebff;
       transition: background 0.2s;
+      cursor: pointer;
     }
 
     .team-grid {
@@ -297,54 +299,129 @@
 
       #contact .social-buttons {
         justify-content: center;
-        
       }
     }
-/* ข่าวสารแนวตั้ง */
-#news article {
-  background: linear-gradient(135deg, #e0f0ff, #f5fbff);
-  border-left: 6px solid #0055aa;
-  border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 5px 15px rgba(0, 85, 170, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  position: relative;
-  overflow: hidden;
-  margin-bottom: 20px;
-}
 
-#news article:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0, 85, 170, 0.2);
-}
+    /* ข่าวสารแนวตั้ง */
+    #news article {
+      background: linear-gradient(135deg, #e0f0ff, #f5fbff);
+      border-left: 6px solid #0055aa;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 5px 15px rgba(0, 85, 170, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
 
-#news article h3 {
-  color: #003366;
-  font-size: 1.2rem;
-  margin-bottom: 0.5rem;
-}
+    #news article:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 85, 170, 0.2);
+    }
 
-#news article p {
-  margin-bottom: 0.5rem;
-  color: #333;
-}
+    #news article h3 {
+      color: #003366;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
 
-#news article small {
-  font-size: 0.8rem;
-  color: #666;
-}
+    #news article p {
+      margin-bottom: 0.5rem;
+      color: #333;
+    }
 
-#news article::before {
-  content: "📰";
-  position: absolute;
-  top: -10px;
-  right: 15px;
-  font-size: 3.5rem;
-  opacity: 0.05;
-  transform: rotate(-15deg);
-}
+    #news article small {
+      font-size: 0.8rem;
+      color: #666;
+    }
 
+    #news article::before {
+      content: "📰";
+      position: absolute;
+      top: -10px;
+      right: 15px;
+      font-size: 3.5rem;
+      opacity: 0.05;
+      transform: rotate(-15deg);
+    }
 
+    /* Popup แสดงรายละเอียดการแข่งขัน */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.5);
+      animation: fadeIn 0.3s ease;
+    }
+
+    .modal-content {
+      background-color: #ffffff;
+      margin: 10% auto;
+      padding: 20px;
+      border: 3px solid #0055aa;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 500px;
+      box-shadow: 0 10px 25px rgba(0, 85, 170, 0.3);
+      animation: slideUp 0.3s ease;
+      position: relative;
+    }
+
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+      position: absolute;
+      right: 15px;
+      top: 10px;
+    }
+
+    .close:hover {
+      color: red;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0}
+      to {opacity: 1}
+    }
+
+    @keyframes slideUp {
+      from {transform: translateY(30px); opacity: 0}
+      to {transform: translateY(0); opacity: 1}
+    }
+
+    /* สไตล์ผลการแข่งขัน */
+    #results table {
+      background-color: #e7f0ff;
+      box-shadow: 0 0 12px rgba(0, 85, 170, 0.15);
+    }
+
+    #results table thead {
+      background-color: #c3dbff;
+    }
+
+    #results table tbody tr:hover {
+      background-color: #a3c0ff;
+      cursor: pointer; /* เปลี่ยน cursor ให้เหมือนตารางอื่น */
+    }
+
+    #results .win {
+      color: #007700;
+      font-weight: 700;
+    }
+
+    #results .lose {
+      color: #aa0000;
+      font-weight: 700;
+    }
   </style>
 </head>
 <body>
@@ -355,6 +432,7 @@
   <a href="#schedule" onclick="showSection('schedule')">📅 ตารางแข่ง</a>
   <a href="#players" onclick="showSection('players')">👥 รายชื่อทีม</a>
   <a href="#news" onclick="showSection('news')">📰 ข่าวสาร</a>
+  <a href="#results" onclick="showSection('results')">🏅 ผลการแข่งขัน</a>
   <a href="#contact" onclick="showSection('contact')">📞 ติดต่อผู้จัด</a>
 </nav>
 
@@ -375,7 +453,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
+        <tr onclick="openModal('หลวงพ่อหลุย', 'ผู้ใหญ่บ้าน', '10 ก.ค. 2025', '11:30', 'หอประชุม โรงเรียนวชิรปราการวิทยาคม')">
           <td>10 ก.ค. 2025</td>
           <td>11:30</td>
           <td>หลวงพ่อหลุย</td>
@@ -383,7 +461,7 @@
           <td>หอประชุม โรงเรียนวชิรปราการวิทยาคม</td>
         </tr>
          
-        <tr>
+        <tr onclick="openModal('บ้านพี่เอง', 'ดาวร้าย', '10 ก.ค. 2025', '11:30', 'หอประชุม โรงเรียนวชิรปราการวิทยาคม')">
           <td>10 ก.ค. 2025</td>
           <td>11:30</td>
           <td>บ้านพี่เอง</td>
@@ -405,7 +483,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
+        <tr onclick="openModal('หมามืด', 'ผู้ใหญ่บ้าน', '11 ก.ค. 2025', '12:30', 'หอประชุม โรงเรียนวชิรปราการวิทยาคม')">
           <td>11 ก.ค. 2025</td>
           <td>12:30</td>
           <td>หมามืด</td>
@@ -441,80 +519,163 @@
         <p><strong>สมาชิก:</strong> 5 คน</p>
         <p><strong>ระดับ:</strong> ม.ต้น</p>
       </div>
-           <div class="team-card">
+      <div class="team-card">
         <div class="team-icon">🔥</div>
         <h3>มา5</h3>
         <p><strong>หัวหน้าทีม:</strong> นายกิตติคุณ กรรณิกา</p>
         <p><strong>สมาชิก:</strong> 5 คน</p>
         <p><strong>ระดับ:</strong> ม.ต้น</p>
-        </div>
+      </div>
     </div>
   </section>
 
-<!-- ข่าวสาร -->
-<section id="news" class="section">
-  <h2>📰 ข่าวสารล่าสุด</h2>
+  <!-- ข่าวสาร -->
+  <section id="news" class="section">
+    <h2>📰 ข่าวสารล่าสุด</h2>
 
-  <article>
-    <h3>🏆 กำหนดการแข่งขัน</h3>
-    <p>รอการประกาศ</p>
-    <small>5 กรกฎาคม 2025</small>
-  </article>
+    <article>
+      <h3>🏆 กำหนดการแข่งขัน</h3>
+      <p>รอการประกาศ</p>
+      <small>5 กรกฎาคม 2025</small>
+    </article>
 
-  <article>
-    <h3>📢 ประกาศกำหนดการแข่งรอบต่อไป</h3>
-    <p>โปรดติดตามกำหนดการและรายละเอียดการแข่งขันรอบต่อไปได้ในหน้า "ตารางแข่ง"</p>
-    <small>3 กรกฎาคม 2025</small>
-  </article>
+    <article>
+      <h3>📢 ประกาศกำหนดการแข่งรอบต่อไป</h3>
+      <p>โปรดติดตามกำหนดการและรายละเอียดการแข่งขันรอบต่อไปได้ในหน้า "ตารางแข่ง"</p>
+      <small>3 กรกฎาคม 2025</small>
+    </article>
+  </section>
 
-</section>
+  <!-- ผลการแข่งขัน -->
+  <section id="results" class="section">
+    <h2>🏅 ผลการแข่งขัน</h2>
 
+    <table>
+      <thead>
+        <tr>
+          <th>วันที่</th>
+          <th>เวลา</th>
+          <th>ทีม A</th>
+          <th>ผล</th>
+          <th>ทีม B</th>
+          <th>สถานที่</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr onclick="openModalResult('10 ก.ค. 2025', '11:30', 'หลวงพ่อหลุย', '1 - 0', 'ผู้ใหญ่บ้าน', 'หอประชุม โรงเรียนวชิรปราการวิทยาคม')">
+          <td>10 ก.ค. 2025</td>
+          <td>11:30</td>
+          <td class="win">หลวงพ่อหลุย</td>
+          <td>1 - 0</td>
+          <td class="lose">ผู้ใหญ่บ้าน</td>
+          <td>หอประชุม โรงเรียนวชิรปราการวิทยาคม</td>
+        </tr>
+        <tr onclick="openModalResult('10 ก.ค. 2025', '11:30', 'บ้านพี่เอง', '1 - 0', 'ดาวร้าย', 'หอประชุม โรงเรียนวชิรปราการวิทยาคม')">
+          <td>10 ก.ค. 2025</td>
+          <td>11:30</td>
+          <td class="win">บ้านพี่เอง</td>
+          <td>1 - 0</td>
+          <td class="lose">ดาวร้าย</td>
+          <td>หอประชุม โรงเรียนวชิรปราการวิทยาคม</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
 
-
-  <!-- ติดต่อผู้จัด -->
+  <!-- ติดต่อ -->
   <section id="contact" class="section">
+    <h2>📞 ติดต่อผู้จัด</h2>
     <div class="contact-container">
-      <h2>📞 ติดต่อผู้จัด</h2>
-
-      <div class="contact-info">
-        <p><strong>📘 Facebook:</strong> <a href="https://www.facebook.com/Wachirafanpage" target="_blank" rel="noopener noreferrer">สภานักเรียน โรงเรียนวชิรปราการวิทยาคม </a></p>
-        <p><strong>📍 สถานที่:</strong> ห้องสภา โรงเรียนวชิรปราการวิทยาคม</p>
-      </div>
-
+      <p class="contact-info">ชื่อผู้จัด: นายกิตติคุณ กรรณิกา</p>
+      <p class="contact-info">อีเมล: kittikun@example.com</p>
+      <p class="contact-info">โทรศัพท์: 081-234-5678</p>
       <div class="social-buttons">
-        <a href="https://www.facebook.com/Wachirafanpage" target="_blank" rel="noopener noreferrer" title="Facebook">📘</a>
-        <a href="mailto:18569@wachira.ac.th" title="Email">📧</a>
-        <a href="tel:+66812345678" title="Phone">📱</a>
+        <a href="https://facebook.com" target="_blank" title="Facebook">📘</a>
+        <a href="https://twitter.com" target="_blank" title="Twitter">🐦</a>
+        <a href="https://instagram.com" target="_blank" title="Instagram">📸</a>
       </div>
-
-      <form onsubmit="alert('ส่งข้อความเรียบร้อยแล้ว!'); return false;">
-        <label for="name">ชื่อของคุณ</label>
-        <input type="text" id="name" name="name" placeholder="เช่น นายสมชาย แก้วใส" required />
-
-        <label for="message">ข้อความ</label>
-        <textarea id="message" name="message" rows="4" placeholder="พิมพ์ข้อความถึงทีมงาน..." required></textarea>
-
+      <form onsubmit="event.preventDefault(); alert('ขอบคุณสำหรับข้อความของคุณ!'); this.reset();">
+        <label for="name">ชื่อ:</label>
+        <input type="text" id="name" name="name" required />
+        <label for="email">อีเมล:</label>
+        <input type="email" id="email" name="email" required />
+        <label for="message">ข้อความ:</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
         <button type="submit">ส่งข้อความ</button>
       </form>
     </div>
   </section>
 </main>
 
-<footer>
-  © 2025 E-Sports Tournament | ออกแบบโดย สภานักเรียน โรงเรียนวชิรปราการวิทยาคม
-</footer>
+<!-- Modal -->
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <h3 id="modal-title"></h3>
+    <p id="modal-date-time"></p>
+    <p id="modal-location"></p>
+  </div>
+</div>
+
+<!-- Modal for Results -->
+<div id="modalResult" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModalResult()">&times;</span>
+    <h3 id="modalResult-title"></h3>
+    <p id="modalResult-score"></p>
+    <p id="modalResult-date-time"></p>
+    <p id="modalResult-location"></p>
+  </div>
+</div>
 
 <script>
-  function showSection(id) {
-    document.querySelectorAll('.section').forEach(el => {
-      el.style.display = 'none';
+  function showSection(sectionId) {
+    document.querySelectorAll('.section').forEach(sec => {
+      sec.style.display = (sec.id === sectionId) ? 'block' : 'none';
     });
-    document.getElementById(id).style.display = 'block';
+  }
+  // แสดงหน้าแรกตอนโหลด
+  showSection('schedule');
+
+  // Modal ตารางแข่ง
+  function openModal(teamA, teamB, date, time, location) {
+    document.getElementById('modal-title').textContent = `${teamA} vs ${teamB}`;
+    document.getElementById('modal-date-time').textContent = `วันที่: ${date} เวลา: ${time}`;
+    document.getElementById('modal-location').textContent = `สถานที่: ${location}`;
+    document.getElementById('modal').style.display = 'block';
   }
 
-  // เริ่มต้นแสดงหน้าแรก
-  showSection('schedule');
+  function closeModal() {
+    document.getElementById('modal').style.display = 'none';
+  }
+
+  // Modal ผลการแข่งขัน
+  function openModalResult(date, time, teamA, score, teamB, location) {
+    document.getElementById('modalResult-title').textContent = `${teamA} vs ${teamB}`;
+    document.getElementById('modalResult-score').textContent = `ผลการแข่งขัน: ${score}`;
+    document.getElementById('modalResult-date-time').textContent = `วันที่: ${date} เวลา: ${time}`;
+    document.getElementById('modalResult-location').textContent = `สถานที่: ${location}`;
+    document.getElementById('modalResult').style.display = 'block';
+  }
+
+  function closeModalResult() {
+    document.getElementById('modalResult').style.display = 'none';
+  }
+
+  // ปิด modal เมื่อคลิกนอกกล่อง modal
+  window.onclick = function(event) {
+    const modal = document.getElementById('modal');
+    const modalResult = document.getElementById('modalResult');
+    if (event.target === modal) {
+      closeModal();
+    } else if (event.target === modalResult) {
+      closeModalResult();
+    }
+  }
 </script>
 
+<footer>
+  &copy; 2025 wachira-esports
+</footer>
 </body>
 </html>
