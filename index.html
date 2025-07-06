@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>เว็บสายการแข่งขันอีสปอร์ต</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #ffffff;
+      color: #003366;
+      transition: background 0.3s ease;
+    }
+
+    header {
+      background: #003366;
+      color: #ffffff;
+      padding: 20px;
+      text-align: center;
+      font-size: 2rem;
+      font-weight: bold;
+    }
+
+    nav {
+      background-color: #0055aa;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      box-shadow: 0 2px 8px rgba(0, 85, 170, 0.3);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav a {
+      color: #ffffff;
+      text-decoration: none;
+      padding: 15px 25px;
+      display: block;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    nav a:hover {
+      background-color: #002244;
+      transform: scale(1.05);
+    }
+
+    main {
+      padding: 30px 20px 80px;
+      max-width: 1100px;
+      margin: 0 auto;
+      animation: fadein 0.8s ease-in-out;
+    }
+
+    h2 {
+      color: #003366;
+      border-left: 6px solid #0055aa;
+      padding-left: 15px;
+      margin-bottom: 25px;
+    }
+
+    h3 {
+      margin-top: 40px;
+      color: #0055aa;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 30px;
+      background-color: #f8fbff;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    table th, table td {
+      border: 1px solid #d6eaff;
+      padding: 12px;
+      text-align: center;
+    }
+
+    table th {
+      background-color: #e0f0ff;
+    }
+
+    .section {
+      display: none;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .team-card {
+      background: #ffffff;
+      border-radius: 12px;
+      border: 2px solid #0055aa;
+      padding: 20px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: center;
+      box-shadow: 0 0 10px rgba(0, 85, 170, 0.1);
+    }
+
+    .team-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 4px 20px rgba(0, 85, 170, 0.3);
+    }
+
+    .team-icon {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      color: #0055aa;
+    }
+
+    footer {
+      background-color: #003366;
+      color: white;
+      text-align: center;
+      padding: 12px;
+      font-size: 0.9rem;
+    }
+
+    article h3 {
+      color: #0055aa;
+    }
+
+    @keyframes fadein {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 600px) {
+      nav {
+        flex-direction: column;
+      }
+      nav a {
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>💎 เว็บสายการแข่งขันอีสปอร์ต</header>
+
+<nav>
+  <a href="#schedule" onclick="showSection('schedule')">📅 ตารางแข่ง</a>
+  <a href="#players" onclick="showSection('players')">👥 รายชื่อทีม</a>
+  <a href="#news" onclick="showSection('news')">📰 ข่าวสาร</a>
+  <a href="#contact" onclick="showSection('contact')">📞 ติดต่อผู้จัด</a>
+</nav>
+
+<main>
+  <!-- ตารางแข่ง -->
+  <section id="schedule" class="section">
+    <h2>📅 ตารางการแข่งขัน</h2>
+
+    <h3>ระดับ มัธยมต้น</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>วันที่</th>
+          <th>เวลา</th>
+          <th>ทีม A</th>
+          <th>ทีม B</th>
+          <th>สถานที่</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>10 ก.ค. 2025</td>
+          <td>11:30</td>
+          <td>หลวงพ่อหลุย</td>
+          <td>ผู้ใหญ่บ้าน</td>
+          <td>หอประชุม โรงเรียนวชิรปราการวิทยาคม</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>ระดับ มัธยมปลาย</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>วันที่</th>
+          <th>เวลา</th>
+          <th>ทีม A</th>
+          <th>ทีม B</th>
+          <th>สถานที่</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>11 ก.ค. 2025</td>
+          <td>12:30</td>
+          <td>หมามืด</td>
+          <td>ผู้ใหญ่บ้าน</td>
+          <td>หอประชุม โรงเรียนวชิรปราการวิทยาคม</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- รายชื่อทีม -->
+  <section id="players" class="section">
+    <h2>👥 รายชื่อทีม</h2>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-icon">🐉</div>
+        <h3>หมามืด</h3>
+        <p><strong>หัวหน้าทีม:</strong> นายพชรพล หาญมนตรี</p>
+        <p><strong>สมาชิก:</strong> 5 คน</p>
+        <p><strong>ระดับ:</strong> ม.ปลาย</p>
+      </div>
+      <div class="team-card">
+        <div class="team-icon">🐺</div>
+        <h3>หลวงพ่อหลุย</h3>
+        <p><strong>หัวหน้าทีม:</strong> นายปรวิทย์ ดวงมาลา</p>
+        <p><strong>สมาชิก:</strong> 5 คน</p>
+        <p><strong>ระดับ:</strong> ม.ปลาย</p>
+      </div>
+      <div class="team-card">
+        <div class="team-icon">🔥</div>
+        <h3>ผู้ใหญ่บ้าน</h3>
+        <p><strong>หัวหน้าทีม:</strong> นายกิตติคุณ กรรณิกา</p>
+        <p><strong>สมาชิก:</strong> 5 คน</p>
+        <p><strong>ระดับ:</strong> ม.ต้น</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ข่าวสาร -->
+  <section id="news" class="section">
+    <h2>📰 ข่าวสารล่าสุด</h2>
+    <article>
+      <h3>🏆 กำหนดการแข่งขัน</h3>
+      <p>รอการประกาศ</p>
+      <small>5 กรกฎาคม 2025</small>
+    </article>
+    <article>
+      <h3>📢 ประกาศกำหนดการแข่งรอบต่อไป</h3>
+      <p>โปรดติดตามกำหนดการและรายละเอียดการแข่งขันรอบต่อไปได้ในหน้า "ตารางแข่ง"</p>
+      <small>3 กรกฎาคม 2025</small>
+    </article>
+  </section>
+
+  <!-- ติดต่อผู้จัด -->
+  <section id="contact" class="section">
+    <h2>📞 ติดต่อผู้จัด</h2>
+    <div style="max-width: 500px; margin: 0 auto; padding: 20px; background: #f8fbff; border-radius: 12px; box-shadow: 0 0 10px rgba(0,85,170,0.1);">
+      <p style="font-size: 1.1rem;"><strong>📘 Facebook:</strong> <a href="https://www.facebook.com/kittikun.kannika" target="_blank" style="color:#0055aa; text-decoration:none;">kittikun.kannika</a></p>
+      <p style="font-size: 1.1rem;"><strong>📧 อีเมล:</strong> <a href="mailto:18569@wachira.ac.th" style="color:#0055aa; text-decoration:none;">18569@wachira.ac.th</a></p>
+      <p style="font-size: 1.1rem;"><strong>📍 สถานที่:</strong> ห้องสภา โรงเรียนวชิรปราการวิทยาคม</p>
+    </div>
+  </section>
+</main>
+
+<footer>© 2025 E-Sports Tournament | ออกแบบโดย กิตติคุณ กรรณิกา</footer>
+
+<script>
+  function showSection(id) {
+    const sections = document.querySelectorAll('.section');
+    sections.forEach(sec => sec.style.display = 'none');
+    document.getElementById(id).style.display = 'block';
+  }
+
+  showSection('schedule'); // แสดงหน้าแรกเริ่มต้น
+</script>
+
+</body>
+</html>
