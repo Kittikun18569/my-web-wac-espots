@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>เว็บสายการแข่งขันอีสปอร์ต</title>
+  <title>wachira-esports</title>
   <style>
     * {
       box-sizing: border-box;
@@ -144,6 +144,142 @@
       display: none;
     }
 
+    /* --- ปรับหน้า contact --- */
+    #contact .contact-container {
+      max-width: 600px;
+      margin: auto;
+      background: linear-gradient(135deg, #cce6ff 0%, #99ccff 100%);
+      padding: 30px 25px;
+      border-radius: 16px;
+      box-shadow: 0 10px 20px rgba(0,85,170,0.3);
+      color: #003366;
+      font-size: 1rem;
+      line-height: 1.5;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #contact .contact-container::before {
+      content: "";
+      position: absolute;
+      top: -60px;
+      right: -60px;
+      width: 150px;
+      height: 150px;
+      background: rgba(0,85,170,0.15);
+      border-radius: 50%;
+      filter: blur(50px);
+      z-index: 0;
+    }
+
+    #contact h2 {
+      position: relative;
+      z-index: 1;
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      color: #003366;
+    }
+
+    #contact p, #contact a {
+      position: relative;
+      z-index: 1;
+      margin-bottom: 1rem;
+    }
+
+    #contact a {
+      color: #003366;
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    #contact a:hover {
+      color: #002244;
+      text-decoration: underline;
+    }
+
+    #contact .contact-info {
+      margin-bottom: 20px;
+      font-size: 1.1rem;
+    }
+
+    /* ปุ่มโซเชียล */
+    #contact .social-buttons {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 25px;
+      position: relative;
+      z-index: 1;
+    }
+
+    #contact .social-buttons a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      background: #0055aa;
+      border-radius: 50%;
+      color: white;
+      font-size: 1.3rem;
+      text-decoration: none;
+      box-shadow: 0 3px 8px rgba(0, 85, 170, 0.4);
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+    #contact .social-buttons a:hover {
+      background: #003366;
+      transform: scale(1.15) rotate(10deg);
+      box-shadow: 0 5px 15px rgba(0, 85, 170, 0.7);
+    }
+
+    /* ฟอร์มติดต่อ */
+    #contact form {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    #contact label {
+      font-weight: 600;
+      color: #003366;
+      font-size: 0.95rem;
+    }
+
+    #contact input, #contact textarea {
+      padding: 10px 12px;
+      border-radius: 8px;
+      border: 1.5px solid #0055aa;
+      font-size: 1rem;
+      font-family: inherit;
+      resize: vertical;
+      transition: border-color 0.3s ease;
+    }
+
+    #contact input:focus, #contact textarea:focus {
+      outline: none;
+      border-color: #002244;
+      box-shadow: 0 0 8px rgba(0, 34, 68, 0.5);
+    }
+
+    #contact button {
+      background-color: #0055aa;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      padding: 12px 20px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    #contact button:hover {
+      background-color: #003366;
+      transform: scale(1.05);
+    }
+
     @media (max-width: 600px) {
       nav {
         flex-direction: column;
@@ -158,12 +294,62 @@
         font-size: 0.75rem;
         padding: 8px;
       }
+
+      #contact .social-buttons {
+        justify-content: center;
+        
+      }
     }
+/* ข่าวสารแนวตั้ง */
+#news article {
+  background: linear-gradient(135deg, #e0f0ff, #f5fbff);
+  border-left: 6px solid #0055aa;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 5px 15px rgba(0, 85, 170, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+#news article:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 85, 170, 0.2);
+}
+
+#news article h3 {
+  color: #003366;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+#news article p {
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+#news article small {
+  font-size: 0.8rem;
+  color: #666;
+}
+
+#news article::before {
+  content: "📰";
+  position: absolute;
+  top: -10px;
+  right: 15px;
+  font-size: 3.5rem;
+  opacity: 0.05;
+  transform: rotate(-15deg);
+}
+
+
   </style>
 </head>
 <body>
 
-<header>💎 เว็บสายการแข่งขันอีสปอร์ต</header>
+<header>💢 wachira-esports</header>
 
 <nav>
   <a href="#schedule" onclick="showSection('schedule')">📅 ตารางแข่ง</a>
@@ -194,6 +380,14 @@
           <td>11:30</td>
           <td>หลวงพ่อหลุย</td>
           <td>ผู้ใหญ่บ้าน</td>
+          <td>หอประชุม โรงเรียนวชิรปราการวิทยาคม</td>
+        </tr>
+         
+        <tr>
+          <td>10 ก.ค. 2025</td>
+          <td>11:30</td>
+          <td>บ้านพี่เอง</td>
+          <td>ดาวร้าย</td>
           <td>หอประชุม โรงเรียนวชิรปราการวิทยาคม</td>
         </tr>
       </tbody>
@@ -247,37 +441,67 @@
         <p><strong>สมาชิก:</strong> 5 คน</p>
         <p><strong>ระดับ:</strong> ม.ต้น</p>
       </div>
+           <div class="team-card">
+        <div class="team-icon">🔥</div>
+        <h3>มา5</h3>
+        <p><strong>หัวหน้าทีม:</strong> นายกิตติคุณ กรรณิกา</p>
+        <p><strong>สมาชิก:</strong> 5 คน</p>
+        <p><strong>ระดับ:</strong> ม.ต้น</p>
+        </div>
     </div>
   </section>
 
-  <!-- ข่าวสาร -->
-  <section id="news" class="section">
-    <h2>📰 ข่าวสารล่าสุด</h2>
-    <article>
-      <h3>🏆 กำหนดการแข่งขัน</h3>
-      <p>รอการประกาศ</p>
-      <small>5 กรกฎาคม 2025</small>
-    </article>
-    <article>
-      <h3>📢 ประกาศกำหนดการแข่งรอบต่อไป</h3>
-      <p>โปรดติดตามกำหนดการและรายละเอียดการแข่งขันรอบต่อไปได้ในหน้า "ตารางแข่ง"</p>
-      <small>3 กรกฎาคม 2025</small>
-    </article>
-  </section>
+<!-- ข่าวสาร -->
+<section id="news" class="section">
+  <h2>📰 ข่าวสารล่าสุด</h2>
+
+  <article>
+    <h3>🏆 กำหนดการแข่งขัน</h3>
+    <p>รอการประกาศ</p>
+    <small>5 กรกฎาคม 2025</small>
+  </article>
+
+  <article>
+    <h3>📢 ประกาศกำหนดการแข่งรอบต่อไป</h3>
+    <p>โปรดติดตามกำหนดการและรายละเอียดการแข่งขันรอบต่อไปได้ในหน้า "ตารางแข่ง"</p>
+    <small>3 กรกฎาคม 2025</small>
+  </article>
+
+</section>
+
+
 
   <!-- ติดต่อผู้จัด -->
   <section id="contact" class="section">
-    <h2>📞 ติดต่อผู้จัด</h2>
-    <div style="max-width: 500px; margin: auto; background: #f8fbff; padding: 20px; border-radius: 10px;">
-      <p><strong>📘 Facebook:</strong> <a href="https://www.facebook.com/kittikun.kannika" target="_blank" style="color:#0055aa;">kittikun.kannika</a></p>
-      <p><strong>📧 อีเมล:</strong> <a href="mailto:18569@wachira.ac.th" style="color:#0055aa;">18569@wachira.ac.th</a></p>
-      <p><strong>📍 สถานที่:</strong> ห้องสภา โรงเรียนวชิรปราการวิทยาคม</p>
+    <div class="contact-container">
+      <h2>📞 ติดต่อผู้จัด</h2>
+
+      <div class="contact-info">
+        <p><strong>📘 Facebook:</strong> <a href="https://www.facebook.com/Wachirafanpage" target="_blank" rel="noopener noreferrer">สภานักเรียน โรงเรียนวชิรปราการวิทยาคม </a></p>
+        <p><strong>📍 สถานที่:</strong> ห้องสภา โรงเรียนวชิรปราการวิทยาคม</p>
+      </div>
+
+      <div class="social-buttons">
+        <a href="https://www.facebook.com/Wachirafanpage" target="_blank" rel="noopener noreferrer" title="Facebook">📘</a>
+        <a href="mailto:18569@wachira.ac.th" title="Email">📧</a>
+        <a href="tel:+66812345678" title="Phone">📱</a>
+      </div>
+
+      <form onsubmit="alert('ส่งข้อความเรียบร้อยแล้ว!'); return false;">
+        <label for="name">ชื่อของคุณ</label>
+        <input type="text" id="name" name="name" placeholder="เช่น นายสมชาย แก้วใส" required />
+
+        <label for="message">ข้อความ</label>
+        <textarea id="message" name="message" rows="4" placeholder="พิมพ์ข้อความถึงทีมงาน..." required></textarea>
+
+        <button type="submit">ส่งข้อความ</button>
+      </form>
     </div>
   </section>
 </main>
 
 <footer>
-  © 2025 E-Sports Tournament | ออกแบบโดย กิตติคุณ กรรณิกา
+  © 2025 E-Sports Tournament | ออกแบบโดย สภานักเรียน โรงเรียนวชิรปราการวิทยาคม
 </footer>
 
 <script>
@@ -288,7 +512,8 @@
     document.getElementById(id).style.display = 'block';
   }
 
-  showSection('schedule'); // เริ่มต้นแสดงหน้าแรก
+  // เริ่มต้นแสดงหน้าแรก
+  showSection('schedule');
 </script>
 
 </body>
