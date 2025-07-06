@@ -422,6 +422,59 @@
       color: #aa0000;
       font-weight: 700;
     }
+  
+  /* เพิ่มไว้ใน <style> เดิม */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.5);
+  animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+  background-color: #ffffff;
+  margin: 10% auto;
+  padding: 20px;
+  border: 3px solid #0055aa;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 10px 25px rgba(0, 85, 170, 0.3);
+  animation: slideUp 0.3s ease;
+  position: relative;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  position: absolute;
+  right: 15px;
+  top: 10px;
+}
+
+.close:hover {
+  color: red;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0}
+  to {opacity: 1}
+}
+
+@keyframes slideUp {
+  from {transform: translateY(30px); opacity: 0}
+  to {transform: translateY(0); opacity: 1}
+}
+
   </style>
 </head>
 <body>
@@ -494,40 +547,53 @@
     </table>
   </section>
 
-  <!-- รายชื่อทีม -->
-  <section id="players" class="section">
-    <h2>👥 รายชื่อทีม</h2>
-    <div class="team-grid">
-      <div class="team-card">
-        <div class="team-icon">🐉</div>
-        <h3>หมามืด</h3>
-        <p><strong>หัวหน้าทีม:</strong> นายพชรพล หาญมนตรี</p>
-        <p><strong>สมาชิก:</strong> 5 คน</p>
-        <p><strong>ระดับ:</strong> ม.ปลาย</p>
-      </div>
-      <div class="team-card">
-        <div class="team-icon">🐺</div>
-        <h3>หลวงพ่อหลุย</h3>
-        <p><strong>หัวหน้าทีม:</strong> นายปรวิทย์ ดวงมาลา</p>
-        <p><strong>สมาชิก:</strong> 5 คน</p>
-        <p><strong>ระดับ:</strong> ม.ปลาย</p>
-      </div>
-      <div class="team-card">
-        <div class="team-icon">🔥</div>
-        <h3>ผู้ใหญ่บ้าน</h3>
-        <p><strong>หัวหน้าทีม:</strong> นายกิตติคุณ กรรณิกา</p>
-        <p><strong>สมาชิก:</strong> 5 คน</p>
-        <p><strong>ระดับ:</strong> ม.ต้น</p>
-      </div>
-      <div class="team-card">
-        <div class="team-icon">🔥</div>
-        <h3>มา5</h3>
-        <p><strong>หัวหน้าทีม:</strong> นายกิตติคุณ กรรณิกา</p>
-        <p><strong>สมาชิก:</strong> 5 คน</p>
-        <p><strong>ระดับ:</strong> ม.ต้น</p>
-      </div>
+ <!-- โค้ด HTML ทั้งหมด เพิ่มเฉพาะส่วน "รายชื่อทีม" + modal -->
+<section id="players" class="section">
+  <h2>👥 รายชื่อทีม</h2>
+  <div class="team-grid">
+    <div class="team-card" onclick="showTeamDetail('หมามืด')">
+      <div class="team-icon">🐉</div>
+      <h3>หมามืด</h3>
+      <p><strong>หัวหน้าทีม:</strong> นายพชรพล หาญมนตรี</p>
+      <p><strong>สมาชิก:</strong> 5 คน</p>
+      <p><strong>ระดับ:</strong> ม.ปลาย</p>
     </div>
-  </section>
+    <div class="team-card" onclick="showTeamDetail('หลวงพ่อหลุย')">
+      <div class="team-icon">🐺</div>
+      <h3>หลวงพ่อหลุย</h3>
+      <p><strong>หัวหน้าทีม:</strong> นายปรวิทย์ ดวงมาลา</p>
+      <p><strong>สมาชิก:</strong> 5 คน</p>
+      <p><strong>ระดับ:</strong> ม.ปลาย</p>
+    </div>
+    <div class="team-card" onclick="showTeamDetail('ผู้ใหญ่บ้าน')">
+      <div class="team-icon">🔥</div>
+      <h3>ผู้ใหญ่บ้าน</h3>
+      <p><strong>หัวหน้าทีม:</strong> นายกิตติคุณ กรรณิกา</p>
+      <p><strong>สมาชิก:</strong> 5 คน</p>
+      <p><strong>ระดับ:</strong> ม.ต้น</p>
+    </div>
+    <div class="team-card" onclick="showTeamDetail('มา5')">
+      <div class="team-icon">🔥</div>
+      <h3>มา5</h3>
+      <p><strong>หัวหน้าทีม:</strong> นายกิตติคุณ กรรณิกา</p>
+      <p><strong>สมาชิก:</strong> 5 คน</p>
+      <p><strong>ระดับ:</strong> ม.ต้น</p>
+    </div>
+  </div>
+</section>
+
+<!-- Modal รายละเอียดทีม -->
+<div id="teamModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeTeamModal()">&times;</span>
+    <h3 id="teamName">ชื่อทีม</h3>
+    <p><strong>หัวหน้าทีม:</strong> <span id="teamLeader"></span></p>
+    <p><strong>ระดับ:</strong> <span id="teamLevel"></span></p>
+    <p><strong>สมาชิกทีม:</strong></p>
+    <ul id="teamMembers"></ul>
+  </div>
+</div>
+
 
   <!-- ข่าวสาร -->
   <section id="news" class="section">
@@ -666,7 +732,63 @@
     } else if (event.target === modalResult) {
       closeModalResult();
     }
+    
   }
+  // ...โค้ดเดิม...
+
+  const teamData = {
+    "หมามืด": {
+      leader: "นายพชรพล หาญมนตรี",
+      level: "ม.ปลาย",
+      members: ["สมาชิก 1", "สมาชิก 2", "สมาชิก 3", "สมาชิก 4", "สมาชิก 5"]
+    },
+    "หลวงพ่อหลุย": {
+      leader: "นายปรวิทย์ ดวงมาลา",
+      level: "ม.ปลาย",
+      members: ["สมาชิก A", "สมาชิก B", "สมาชิก C", "สมาชิก D", "สมาชิก E"]
+    },
+    "ผู้ใหญ่บ้าน": {
+      leader: "นายกิตติคุณ กรรณิกา",
+      level: "ม.ต้น",
+      members: ["สมาชิก ก", "สมาชิก ข", "สมาชิก ค", "สมาชิก ง", "สมาชิก จ"]
+    },
+    "มา5": {
+      leader: "นายกิตติคุณ กรรณิกา",
+      level: "ม.ต้น",
+      members: ["สมาชิก x", "สมาชิก y", "สมาชิก z", "สมาชิก w", "สมาชิก v"]
+    }
+  };
+
+  function showTeamDetail(teamName) {
+    const team = teamData[teamName];
+    if (!team) return;
+
+    document.getElementById("teamName").textContent = teamName;
+    document.getElementById("teamLeader").textContent = team.leader;
+    document.getElementById("teamLevel").textContent = team.level;
+
+    const memberList = document.getElementById("teamMembers");
+    memberList.innerHTML = "";
+    team.members.forEach(member => {
+      const li = document.createElement("li");
+      li.textContent = member;
+      memberList.appendChild(li);
+    });
+
+    document.getElementById("teamModal").style.display = "block";
+  }
+
+  function closeTeamModal() {
+    document.getElementById("teamModal").style.display = "none";
+  }
+
+  // ปิด modal ทีมเมื่อคลิกนอกกล่อง
+  window.onclick = function(event) {
+    if (event.target === document.getElementById("teamModal")) {
+      closeTeamModal();
+    }
+  };
+
 </script>
 
 <footer>
